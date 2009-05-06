@@ -55,8 +55,7 @@ unittest=: 3 : 0
 
 unittest_z_=: unittest_pUnitRun_
 
-0 : 0 NB. 'test'
+Note 'demo'
   unittest jpath '~addons/general/unittest/demo/one_test.ijs'
   unittest jpath '~addons/general/unittest/demo/two_test.ijs'
-
 )

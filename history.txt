@@ -1,4 +1,7 @@
 general/unittest - change log
 
+== 1.0.2 ==
+ * chg: minor example syntax
+
 == 1.0.1 ==
  * initial
