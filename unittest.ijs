@@ -16,6 +16,8 @@ errNum=: 13!:11
 errMsg=: 13!:12
 ERR_NAMES=: 9!:8''
 
+pad=: ' ',~ ' ', '.'#~ 40-#  NB. customizable padding
+
 unittest=: 3 : 0
   r=. 'Test: ',y,LF
   c=. conew 'pUnitBase'
@@ -26,36 +28,46 @@ unittest=: 3 : 0
     tl=. 'test_'nl__c''
     for_tb. tl do.
       t=. 5}.> tb
+      p=. pad t
       if. c attr_ignore t do.
-        r=. r,t,': Ignored',LF
+        r=. r,t,p,'Ignored',LF
       else.
         v=. cofullname__c > 'test_',t
         try.
           before_each__c t
-          v~''
-          after_each__c t
-          r=. r,t,': OK',LF
-        catch.
-          e=. (_1+errNum''){::ERR_NAMES
-          if. e -: c attr_expect t do.
-            r=. r,t,': OK',LF
-          else.
-            r=. r,t,': Error',LF,errMsg''
+          try.
+            v~''
+          catch.
+            e=. (_1+errNum''){::ERR_NAMES
+            if. e -: c attr_expect t do.
+              r=. r,t,p,'OK',LF
+            else.
+              r=. r,t,p,'Fail',LF,errMsg''
+            end.
           end.
+          after_each__c t
+          r=. r,t,p,'OK',LF
+        catch.
+          r=. r,LF,'Test Error:',LF,(errMsg''),LF
         end.
       end.
     end.
     after_all__c''
   catch.
-    r=. r,LF,'/!\ Critical Error:',LF,(errMsg''),LF
+    r=. r,LF,'Suite Error:',LF,(errMsg''),LF
   end.
   codestroy__c''
-  r
+  r,LF
 )
 
 unittest_z_=: unittest_pUnitRun_
 
-Note 'demo'
+Note 'Single files'
   unittest jpath '~addons/general/unittest/demo/one_test.ijs'
   unittest jpath '~addons/general/unittest/demo/two_test.ijs'
+)
+
+Note 'Directory tree'
+  require 'dir'
+  ;unittest each{."1 dirtree jpath '~addons/general/unittest/demo/*_test.ijs'
 )

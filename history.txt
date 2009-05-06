@@ -1,5 +1,9 @@
 general/unittest - change log
 
+== 1.0.3 ==
+ * add: padding
+ * fix: catching setup/teardown code
+
 == 1.0.2 ==
  * chg: minor example syntax
 
