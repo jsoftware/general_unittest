@@ -10,7 +10,7 @@ Copyright 2008-2009 (C) Oleg Kobchenko
 
 LABCATEGORY=: 'General'
 
-VERSION=: '1.0.3'
+VERSION=: '1.0.4'
 
 RELEASE=: 'j602'
 

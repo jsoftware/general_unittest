@@ -29,8 +29,9 @@ unittest=: 3 : 0
     for_tb. tl do.
       t=. 5}.> tb
       p=. pad t
+      rr=. t,p,'OK',LF
       if. c attr_ignore t do.
-        r=. r,t,p,'Ignored',LF
+        rr=. t,p,'Ignored',LF
       else.
         v=. cofullname__c > 'test_',t
         try.
@@ -40,17 +41,17 @@ unittest=: 3 : 0
           catch.
             e=. (_1+errNum''){::ERR_NAMES
             if. e -: c attr_expect t do.
-              r=. r,t,p,'OK',LF
+              rr=. t,p,'OK',LF
             else.
-              r=. r,t,p,'Fail',LF,errMsg''
+              rr=. t,p,'Fail',LF,errMsg''
             end.
           end.
           after_each__c t
-          r=. r,t,p,'OK',LF
         catch.
-          r=. r,LF,'Test Error:',LF,(errMsg''),LF
+          rr=. LF,'Test Error:',LF,(errMsg''),LF
         end.
       end.
+      r=. r,rr
     end.
     after_all__c''
   catch.

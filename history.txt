@@ -1,5 +1,8 @@
 general/unittest - change log
 
+== 1.0.4 ==
+ * fix: streamline test report string collection
+
 == 1.0.3 ==
  * add: padding
  * fix: catching setup/teardown code
