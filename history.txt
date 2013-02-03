@@ -1,5 +1,8 @@
 general/unittest - change log
 
+== 1.0.5 ==
+ * chg: update for j801
+
 == 1.0.4 ==
  * fix: streamline test report string collection
 
