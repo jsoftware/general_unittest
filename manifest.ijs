@@ -10,9 +10,9 @@ Copyright 2008-2009 (C) Oleg Kobchenko
 
 LABCATEGORY=: 'General'
 
-VERSION=: '1.0.7'
+VERSION=: '1.0.8'
 
-RELEASE=: 'j602 j701 j801 j802'
+RELEASE=: 'j602 j701 j801 j802 j803'
 
 PLATFORMS=: ''
 
